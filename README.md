@@ -25,7 +25,7 @@ Desenvolver um modelo de aprendizado de máquina capaz de **prever o preço (`pr
 
 ## 3. Divisão de Tarefas
 
-*   **Fundação do Projeto - [Seu Nome]:** Definição do problema, criação do repositório, estruturação de pastas, documentação inicial e carga/análise inicial dos dados.
+*   **Fundação do Projeto - [Leonardo Pereira Gonçalves]:** Definição do problema, criação do repositório, estruturação de pastas, documentação inicial e carga/análise inicial dos dados.
 *   **ETL (Extração, Transformação e Carga) - [Nome do Colega 1]:** Responsável pela limpeza e preparação dos dados para análise, seguindo as instruções no notebook `01-etl.ipynb`.
 *   **Análise Exploratória e Visualizações - [Nome do Colega 2]:** Responsável por gerar gráficos e insights a partir dos dados limpos (notebook `02-analise-exploratoria.ipynb`).
 *   **Modelagem e Machine Learning - [Nome do Colega 3]:** Responsável por treinar e testar os modelos de previsão de preço (notebook `03-modelagem.ipynb`).
@@ -35,10 +35,18 @@ Desenvolver um modelo de aprendizado de máquina capaz de **prever o preço (`pr
 
 1.  **Clone o repositório:**
     ```bash
-    git clone [URL_DO_SEU_REPOSITORIO]
+    git clone [https://github.com/nizoelgp/Projeto-Pratico-PP-Mineracao-De-Dados.git]
     ```
 2.  **Instale as bibliotecas necessárias:**
     ```bash
     pip install pandas matplotlib seaborn scikit-learn jupyter
     ```
 3.  **Para reproduzir a análise inicial**, acesse o notebook `01-etl.ipynb` compartilhado no Google Colab. As etapas seguintes continuarão a partir dele.
+	[**Link para o NoteBook no Google Colab**](https://colab.research.google.com/drive/1uq-E_8EAg81pfCQ14dkUZi-Eq9gefpMQ?usp=sharing)
+
+## 5. Documentação
+
+O relatório acadêmico completo do projeto está sendo desenvolvido em LaTeX e pode ser encontrado na pasta `/docs`.
+
+*   **Para ler a versão mais recente**, acesse o arquivo [**`main.pdf`**](./docs/main.pdf) diretamente no GitHub.
+*   **Para colaborar na edição do documento**, utilize nosso ambiente de trabalho no Overleaf: [**Link para o Projeto no Overleaf**](https://pt.overleaf.com/6542975238bxfsmkzkzqsr#d8878b)
