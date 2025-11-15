@@ -26,7 +26,7 @@ Desenvolver um modelo de aprendizado de máquina capaz de **prever o preço (`pr
 ## 3. Divisão de Tarefas
 
 *   **Fundação do Projeto - [Leonardo Pereira Gonçalves]:** Definição do problema, criação do repositório, estruturação de pastas, documentação inicial e carga/análise inicial dos dados.
-*   **ETL (Extração, Transformação e Carga) - [Nome do Colega 1]:** Responsável pela limpeza e preparação dos dados para análise, seguindo as instruções no notebook `01-etl.ipynb`.
+*   **ETL (Extração, Transformação e Carga) - Henrique Murakami Silva:** Responsável pela limpeza e preparação dos dados para análise, seguindo as instruções no notebook `01-etl.ipynb`.
 *   **Análise Exploratória e Visualizações - [Nome do Colega 2]:** Responsável por gerar gráficos e insights a partir dos dados limpos (notebook `02-analise-exploratoria.ipynb`).
 *   **Modelagem e Machine Learning - [Nome do Colega 3]:** Responsável por treinar e testar os modelos de previsão de preço (notebook `03-modelagem.ipynb`).
 *   **Avaliação e Conclusão - [Nome do Colega 4]:** Responsável por avaliar a performance dos modelos, interpretar os resultados e redigir a conclusão do projeto (notebook `04-avaliacao-e-resultados.ipynb`).

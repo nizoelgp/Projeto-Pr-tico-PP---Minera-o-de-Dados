@@ -45,7 +45,7 @@
 % INFORMAÇÕES DA CAPA E FOLHA DE ROSTO
 % ===================================================================
 \titulo{Análise Preditiva de Preços de Smartphones para o Mercado de 2025}
-\autor{Leonardo Pereira Gonçalves \and Nome do Colega 2 \and Nome do Colega 3 \and Nome do Colega 4 \and Nome do Colega 5}
+\autor{Leonardo Pereira Gonçalves \and Henrique Murakami Silva \and Nome do Colega 3 \and Nome do Colega 4 \and Nome do Colega 5}
 \instituicao{UEMG - Sistemas de informação
     \par
     Mineração de Dados - Rení Aparecido Norberto Pinto
@@ -133,8 +133,62 @@ Contudo, a inspeção visual dos dados apontou a necessidade das seguintes taref
 \begin{itemize}
     \item \textbf{Limpeza da Coluna `model`:} A coluna que identifica o modelo do aparelho contém ruídos numéricos (ex: ``A98 111''). Estes devem ser removidos para padronizar os nomes.
     \item \textbf{Transformação de Variáveis Categóricas:} A coluna \texttt{5g\_support}, com valores "Yes" e "No", precisará ser convertida para um formato numérico (0 ou 1) para ser utilizada em modelos matemáticos. Outras colunas, como \texttt{processor}, também deverão ser tratadas (ex: via One-Hot Encoding).
-    \item \textbf{Remoção de Colunas Irrelevantes:} A coluna \texttt{year} possui um valor constante (2025) para todos os registros e, portanto, não agrega valor preditivo ao modelo, podendo ser removida.
 \end{itemize}
+
+\subsection{Implementação da Etapa de ETL}
+
+Após a análise preliminar apresentada anteriormente, foi desenvolvido o processo completo de ETL (Extração, Transformação e Carga), responsável por limpar, padronizar e preparar o conjunto de dados para a análise exploratória e posterior modelagem preditiva. O processo foi realizado utilizando Python e a biblioteca Pandas no ambiente Google Colab.
+Como explicado por \cite{tecmundo2025}, o processo de ETL envolve etapas de extração, transformação e carga.
+
+
+\subsubsection{Transformações Aplicadas}
+
+Com base nos problemas identificados, foram realizadas as seguintes operações:
+
+\begin{itemize}
+\item \textbf{Limpeza da coluna \texttt{model}:} Remoção de números aleatórios ao final do nome do modelo, garantindo padronização.
+\item \textbf{Conversão da variável \texttt{5g\_support}:} Transformação dos valores "Yes" e "No" para valores numéricos binários (1 e 0).
+\item \textbf{Codificação de variáveis categóricas (One-Hot Encoding):} Colunas como \texttt{brand}, \texttt{os}, \texttt{processor} e \texttt{release\_month} foram convertidas em variáveis dummy, tornando-as adequadas para algoritmos de machine learning.
+\end{itemize}
+
+\subsubsection{Código Utilizado}
+
+\begin{lstlisting}[style=pythonstyle, caption={Código completo de ETL utilizado para limpeza e transformação dos dados.}]
+
+#Importando as bibliotecas essenciais
+import pandas as pd
+
+#1. Extrair
+caminho_do_arquivo = '/content/Global_Mobile_Prices_2025_Extended.csv'
+df = pd.read_csv(caminho_do_arquivo)
+
+#2. Transformar
+#Limpeza da coluna model (remover valores irrelevantes)
+df['model'] = df['model'].str.replace(r'\s\d+$', '', regex=True)
+
+#Converter a coluna 5g_support para valores numericos
+df['5g_support'] = df['5g_support'].apply(lambda x: 1 if x == 'Yes' else 0)
+
+#One-Hot Encoding para variaveis categoricas
+colunas_categoricas = ['brand', 'os', 'processor', 'release_month']
+df = pd.get_dummies(df, columns=colunas_categoricas, drop_first=True)
+
+#3. Carga: Salvando o dataset processado
+df.to_csv('/content/dados_limpos_para_analise.csv', index=False)
+\end{lstlisting}
+
+\subsubsection{Resultado Final}
+
+O processo de ETL gerou o arquivo \texttt{dados\_limpos\_para\_analise.csv}, contendo:
+
+\begin{itemize}
+\item variáveis categóricas tratadas e codificadas,
+\item nomes de modelos corrigidos,
+\item ausência de dados nulos ou inconsistências,
+\item estrutura final adequada para treinamento de modelos de machine learning.
+\end{itemize}
+
+Esse dataset limpo servirá de base para a etapa de análise exploratória, que será realizada pelo próximo integrante do grupo.
 
 \section{Análise Exploratória de Dados (Em Desenvolvimento)}
 \textit{[Esta seção será desenvolvida pelo integrante responsável pela análise exploratória. Aqui serão inseridos gráficos e visualizações para investigar a distribuição dos preços, a correlação entre as variáveis e outros insights extraídos dos dados já limpos.]}
